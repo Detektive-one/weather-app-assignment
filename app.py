@@ -12,7 +12,7 @@ def get_coordinates(city_name):
     """Fetch latitude and longitude of a city from the Excel file."""
     try:
         df = pd.read_excel(CITIES_FILE)
-        # Look for the matching city (case-insensitive)
+   
         match = df[df['city'].str.lower() == city_name.lower()]
         if not match.empty:
             latitude = match.iloc[0]['lat']
@@ -53,4 +53,4 @@ def index():
     return render_template('index.html', weather=weather_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
